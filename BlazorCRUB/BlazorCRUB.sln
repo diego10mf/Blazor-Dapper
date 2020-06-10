@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorCRUB.UI", "BlazorCRUB.UI\BlazorCRUB.UI.csproj", "{4EAE02F0-D370-48A5-B98B-0EA15490944C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorCRUB.UI", "BlazorCRUB.UI\BlazorCRUB.UI.csproj", "{4EAE02F0-D370-48A5-B98B-0EA15490944C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorCRUB.Model", "BlazorCRUB.Model\BlazorCRUB.Model.csproj", "{D993C544-137A-4521-BB6E-E840D35889B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorCRUB.Model", "BlazorCRUB.Model\BlazorCRUB.Model.csproj", "{D993C544-137A-4521-BB6E-E840D35889B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorCRUB.Data.Dapper", "BlazorCRUB.Data.Dapper\BlazorCRUB.Data.Dapper.csproj", "{D352B25F-7D67-4747-B603-4026F0AB683C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorCRUB.Data.Dapper", "BlazorCRUB.Data.Dapper\BlazorCRUB.Data.Dapper.csproj", "{D352B25F-7D67-4747-B603-4026F0AB683C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
