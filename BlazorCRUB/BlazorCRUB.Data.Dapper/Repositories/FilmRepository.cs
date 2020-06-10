@@ -27,9 +27,16 @@ namespace BlazorCRUB.Data.Dapper.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Film>> GetAllFilms()
+        public async Task<IEnumerable<Film>> GetAllFilms()
         {
-            throw new NotImplementedException();
+            var db = dbConnection();
+
+            var sql = @"SELECT Id, Title, Director, ReleaseDate
+                        FROM [dbo].[Films]";
+
+
+
+            return await db.QueryAsync<Film>(sql.ToString(), new { }); ;
         }
 
         public Task<Film> GetFilmDetails(int id)
@@ -40,10 +47,11 @@ namespace BlazorCRUB.Data.Dapper.Repositories
         public async Task<bool> InsertFilm(Film film)
         {
             var db = dbConnection();
+
             var sql = @"INSERT INTO Films (Title, Director, ReleaseDate) VALUES (@Title, @Director, @ReleaseDate)";
 
             var result = await db.ExecuteAsync(sql.ToString(),
-                new { film.Title, film.Director, film.ReleaseDate });
+                new {film.Title, film.Director, film.ReleaseDate});
 
             return result > 0;
         }

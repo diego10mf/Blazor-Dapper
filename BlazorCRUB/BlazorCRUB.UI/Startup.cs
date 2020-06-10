@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BlazorCRUB.UI.Data;
+using BlazorCRUB.UI.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +30,10 @@ namespace BlazorCRUB.UI
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddScoped<IFilmService, FilmService>();
+
+            var SqlConnectionConfiguration = new SqlConfiguration(Configuration.GetConnectionString("Data Source=DESKTOP-VK2NQ7E\\SQLEXPRESS;Initial Catalog=BlazorDapper;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+            services.AddSingleton(SqlConnectionConfiguration);
             
         }
 
