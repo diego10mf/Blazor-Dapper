@@ -22,9 +22,16 @@ namespace BlazorCRUB.Data.Dapper.Repositories
             return new SqlConnection(ConnectionString);
         }
 
-        public Task<bool> DeleteFilm(int id)
+        public async Task<bool> DeleteFilm(int id)
         {
-            throw new NotImplementedException();
+            var db = dbConnection();
+
+            var sql = @"DELETE FROM Films WHERE Id=@Id";
+
+            var result = await db.ExecuteAsync(sql.ToString(),
+                new { Id = id });
+
+            return result > 0;
         }
 
         public async Task<IEnumerable<Film>> GetAllFilms()
@@ -35,13 +42,22 @@ namespace BlazorCRUB.Data.Dapper.Repositories
                         FROM [dbo].[Films]";
 
 
+            return await db.QueryAsync<Film>(sql.ToString(), new { });
 
-            return await db.QueryAsync<Film>(sql.ToString(), new { }); ;
         }
+        
 
-        public Task<Film> GetFilmDetails(int id)
+        public async Task<Film> GetFilmDetails(int id)
         {
-            throw new NotImplementedException();
+            var db = dbConnection();
+
+            var sql = @"SELECT Id, Title, Director, ReleaseDate
+                        FROM [dbo].[Films]
+                        WHERE Id=@Id";
+
+
+
+            return await db.QueryFirstOrDefaultAsync<Film>(sql.ToString(), new { Id=id }); ;
         }
 
         public async Task<bool> InsertFilm(Film film)
@@ -56,9 +72,16 @@ namespace BlazorCRUB.Data.Dapper.Repositories
             return result > 0;
         }
 
-        public Task<bool> UpdateFilm(Film film)
+        public async Task<bool> UpdateFilm(Film film)
         {
-            throw new NotImplementedException();
+            var db = dbConnection();
+
+            var sql = @"UPDATE Films SET Title=@Title, Director=@Director, ReleaseDate=@ReleaseDate WHERE Id=@Id ";
+
+            var result = await db.ExecuteAsync(sql.ToString(),
+                new { film.Title, film.Director, film.ReleaseDate, film.Id});
+
+            return result > 0;
         }
     }
 }
